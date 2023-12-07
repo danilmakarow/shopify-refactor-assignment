@@ -1,0 +1,36 @@
+{% schema %}
+{
+  "name": "custom-featured-products",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.custom-featured-products.settings.collection.label"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="featured-products">
+    <h2>Featured Products</h2>
+
+    <div class="products-box">
+    {%- for product in section.settings.collection.products -%}
+        <p>Product:</p>
+
+        {% render 'custom-card-product',
+                card_product: product,
+                section_id: section.id
+        %}
+    {% endfor %}
+    </div>
+</div>
+
+{% comment %}
+
+{% render 'card-product',
+        card_product: product,
+        section_id: section.id
+%}
+{% endcomment %}
