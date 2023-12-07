@@ -10,7 +10,7 @@
             <input type="hidden" name="id" value="{{ card_product.variants.first.id }}" />
             <input type="hidden" name="quantity" value="1" />
             <button type="submit" class="product-card__button" >
-                Add to cart - ${{ card_product.price }}
+                Add to cart - {{ card_product.price |  money_without_trailing_zeros }}
             </button>
         {% endform %}
     </div>
