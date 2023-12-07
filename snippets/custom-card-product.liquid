@@ -1,3 +1,17 @@
-<div class="">
-    <p>{{ card_product.title }}</p>
+{{ 'custom-card-product.css' | asset_url | stylesheet_tag }}
+
+<div class="product-card">
+    <img class="product-card__image" src="{{ card_product.featured_media | image_url }}" loading="lazy" />
+    <div class="product-card__title-box">
+        <a class="product-card__title" href="{{ card_product.url }}">{{ card_product.title }}</a>
+    </div>
+    <div class="product-card__button-box">
+        {% form "product", card_product %}
+            <input type="hidden" name="id" value="{{ card_product.variants.first.id }}" />
+            <input type="hidden" name="quantity" value="1" />
+            <button type="submit" class="product-card__button" >
+                Add to cart - ${{ card_product.price }}
+            </button>
+        {% endform %}
+    </div>
 </div>

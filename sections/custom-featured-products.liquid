@@ -1,3 +1,6 @@
+{{ 'custom-featured-products.css' | asset_url | stylesheet_tag }}
+
+
 {% schema %}
 {
   "name": "custom-featured-products",
@@ -13,24 +16,16 @@
 {% endschema %}
 
 <div class="featured-products">
-    <h2>Featured Products</h2>
+    <h2 class="featured-products__title">Featured Products</h2>
+    <script src="{{ 'custom-card-product.js' | asset_url }}" defer="defer"></script>
 
-    <div class="products-box">
-    {%- for product in section.settings.collection.products -%}
-        <p>Product:</p>
-
-        {% render 'custom-card-product',
-                card_product: product,
-                section_id: section.id
-        %}
-    {% endfor %}
+    <div class="featured-products__products-box">
+        {%- for product in section.settings.collection.products -%}
+            {% render 'custom-card-product',
+                    card_product: product,
+                    section_id: section.id
+            %}
+        {% endfor %}
     </div>
 </div>
 
-{% comment %}
-
-{% render 'card-product',
-        card_product: product,
-        section_id: section.id
-%}
-{% endcomment %}
