@@ -1,0 +1,24 @@
+.featured-products__products-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  column-gap: 40px;
+  row-gap: 120px;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+@media (max-width: 1100px) {
+  .featured-products__products-box {
+    grid-template-columns: 1fr;
+    row-gap: 50px;
+  }
+}
+
+.featured-products__title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 900;
+  color: #656874;
+  margin-bottom: 60px;
+}

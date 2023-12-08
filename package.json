@@ -1,0 +1,20 @@
+{
+  "name": "shopify-refactor-assignment",
+  "version": "1.0.0",
+  "description": "For local development deployment:\r ```sh\r shopify theme dev --store {46b11a-3}  \r ```\r To deploy the made changes:\r ```sh\r shopify theme push \r ```",
+  "main": "index.js",
+  "scripts": {
+    "dev": "shopify theme dev --store {46b11a-3}",
+    "gulp": "gulp watch",
+    "deploy": "shopify theme push"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "node-sass": "^9.0.0",
+    "sass": "^1.69.5"
+  }
+}
