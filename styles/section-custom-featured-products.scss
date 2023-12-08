@@ -1,17 +1,19 @@
 $container-max-width: 1080px;
+$featured-products-title-color: #656874;
 
 .featured-products__products-box {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   justify-items: center;
   column-gap: 40px;
   row-gap: 120px;
   max-width: $container-max-width;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0 30px;
   list-style-type: none;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 600px) {
+    padding: 0 0px;
     grid-template-columns: 1fr;
     row-gap: 50px;
   }
@@ -21,6 +23,11 @@ $container-max-width: 1080px;
   text-align: center;
   font-size: 42px;
   font-weight: 900;
-  color: #656874;
+  color: $featured-products-title-color;
   margin-bottom: 60px;
+
+  @media (max-width: 600px) {
+    font-size: 26px;
+    margin-bottom: 40px;
+  }
 }

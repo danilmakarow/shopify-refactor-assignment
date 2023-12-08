@@ -4,11 +4,18 @@ const statusMessages = {
   loading: "Loading...",
   success: "Added to Cart ✅",
   defaultError: "Unexpected error",
+};
+
+const buttonData = {
+  disabledClass: "product-card__button__disabled",
+  disabledAttribute: "disabled"
 }
 
 addToCardForms.forEach(form =>
     form.addEventListener("submit", async (event) => {
-      const {setLoading, setSucceed, setError} = controlButtonMessage(form.querySelector(".product-card__button"), statusMessages)
+      const {setLoading, setSucceed, setError} = controlButtonMessage(
+        form.querySelector(".product-card__button"), statusMessages, buttonData
+      )
 
       try {
         event.preventDefault();
@@ -23,7 +30,6 @@ addToCardForms.forEach(form =>
         setSucceed();
         updateProductCounter(document.querySelectorAll(".cart-count-bubble span"));
       } catch (error) {
-        console.log(error)
         setError(error.message );
       }
     })
@@ -34,22 +40,30 @@ const updateProductCounter = (counterElement) => {
   counterElement.forEach(el => el.textContent = Number(el.textContent) + 1);
 }
 
-const controlButtonMessage = (buttonElement, messages) => {
+const controlButtonMessage = (buttonElement, messages, buttonDisable) => {
   const originText = buttonElement.textContent
 
-  const resetButtonText = () => setTimeout(() => buttonElement.textContent = originText, 3000)
+  const resetButton = () => setTimeout(() => {
+    buttonElement.textContent = originText;
+
+    buttonElement.removeAttribute(buttonDisable.disabledAttribute);
+    buttonElement.classList.remove(buttonDisable.disabledClass);
+  }, 2000)
 
   return {
     setLoading(){
-      buttonElement.textContent = messages.loading
+      buttonElement.textContent = messages.loading;
+
+      buttonElement.setAttribute(buttonDisable.disabledAttribute, "");
+      buttonElement.classList.add(buttonDisable.disabledClass);
     },
     setSucceed(){
-      buttonElement.textContent = messages.success
-      resetButtonText()
+      buttonElement.textContent = messages.success;
+      resetButton();
     },
     setError(errorMessage){
-      buttonElement.textContent = errorMessage || messages.defaultError
-      resetButtonText()
+      buttonElement.textContent = errorMessage || messages.defaultError;
+      resetButton();
     },
   }
 }

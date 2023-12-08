@@ -1,12 +1,17 @@
-$product-card-max-width: 520px;
+$product-card-max-width-desktop: 520px;
+$product-card-max-width-phones: 400px;
 $product-card-title-color: rgba(101, 104, 116, 0.90);
 $product-card-button-bg: #464B90;
 $product-card-button-hover-bg: #5f67c0;
 
 .product-card {
   width: 100%;
-  max-width: $product-card-max-width;
+  max-width: $product-card-max-width-desktop;
   text-align: center;
+
+  @media (max-width: 600px) {
+    max-width: $product-card-max-width-phones;
+  }
 
   &__image-box {
     display: block;
@@ -34,6 +39,8 @@ $product-card-button-hover-bg: #5f67c0;
     line-height: 42px;
     transition: 0.3s;
 
+
+
     &:hover,
     &:active {
       text-decoration: underline;
@@ -41,8 +48,10 @@ $product-card-button-hover-bg: #5f67c0;
   }
 
   &__button {
+    max-width: 285px;
+    width: 100%;
     background-color: $product-card-button-bg;
-    padding: 18px 80px;
+    padding: 18px 0;
     border: none;
     border-radius: 40px;
     color: white;
@@ -58,4 +67,15 @@ $product-card-button-hover-bg: #5f67c0;
       background-color: $product-card-button-hover-bg;
     }
   }
+
+  &__button__disabled {
+    cursor: not-allowed;
+  }
+}
+
+.text__clamp-1-line {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
