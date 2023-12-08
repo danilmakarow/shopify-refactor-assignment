@@ -15,17 +15,16 @@
 }
 {% endschema %}
 
+<script src="{{ 'add-to-cart-handle.js' | asset_url }}" defer="defer"></script>
 <div class="featured-products">
     <h2 class="featured-products__title">Featured Products</h2>
-    <script src="{{ 'custom-card-product.js' | asset_url }}" defer="defer"></script>
-
-    <div class="featured-products__products-box">
+    <ul class="featured-products__products-box">
         {%- for product in section.settings.collection.products -%}
             {% render 'custom-card-product',
                     card_product: product,
                     section_id: section.id
             %}
         {% endfor %}
-    </div>
+    </ul>
 </div>
 

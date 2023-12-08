@@ -8,10 +8,14 @@ $product-card-button-hover-bg: #5f67c0;
   max-width: $product-card-max-width;
   text-align: center;
 
+  &__image-box {
+    display: block;
+    margin-bottom: 35px;
+  }
+
   &__image {
     height: 340px;
     width: 100%;
-    margin-bottom: 35px;
     object-fit: cover;
   }
 

@@ -3,10 +3,13 @@
   max-width: 520px;
   text-align: center;
 }
+.product-card__image-box {
+  display: block;
+  margin-bottom: 35px;
+}
 .product-card__image {
   height: 340px;
   width: 100%;
-  margin-bottom: 35px;
   object-fit: cover;
 }
 .product-card__title-box {

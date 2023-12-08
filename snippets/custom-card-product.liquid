@@ -1,7 +1,10 @@
 {{ 'component-custom-card-product.css' | asset_url | stylesheet_tag }}
 
-<div class="product-card">
-    <img class="product-card__image" src="{{ card_product.featured_media | image_url }}" loading="lazy" />
+<li class="product-card">
+    <a class="product-card__image-box" href="{{ card_product.url }}">
+        <img class="product-card__image" src="{{ card_product.featured_media | image_url }}" alt="{{ card_product.title }}" loading="lazy" />
+    </a>
+
     <div class="product-card__title-box">
         <a class="product-card__title" href="{{ card_product.url }}">{{ card_product.title }}</a>
     </div>
@@ -14,4 +17,4 @@
             </button>
         {% endform %}
     </div>
-</div>
+</li>
